@@ -3,7 +3,7 @@ package com.daniel.pixelshop.main;
 import com.daniel.pixelshop.jframes.MainJFrame;
 
 /*
-	Made By: Daniel Chapin
+	Made By: Daniel Chapin 
  */
 
 public class DCPSMain {
