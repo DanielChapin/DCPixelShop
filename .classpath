@@ -2,5 +2,15 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/Desktop/Libs/jogamp-all-platforms/jar/gluegen-rt.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="DCPixelShop/src/com/daniel/pixelshop/natives"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Daniel/Desktop/Libs/jogamp-all-platforms/jar/jogl-all.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="DCPixelShop/src/com/daniel/pixelshop/natives"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
