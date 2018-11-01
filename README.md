@@ -8,6 +8,8 @@ I would love to hear if anyone actually uses my software so it's not like I'll h
 Also, the libs included in this application are not in this repo. I will include the actual application closer to when it's done.
 **Libs:**
 
+- [JOGL](https://jogamp.org/deployment/jogamp-current/archive/)
+
 Thanks and enjoy,
 
 Daniel Chapin
