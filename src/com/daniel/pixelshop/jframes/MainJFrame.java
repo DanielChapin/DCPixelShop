@@ -78,7 +78,7 @@ public class MainJFrame extends JFrame {
 				
 			}
 
-			@Override
+			@Override 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				
 				

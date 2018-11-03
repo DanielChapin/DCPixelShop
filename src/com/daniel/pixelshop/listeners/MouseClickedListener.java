@@ -11,7 +11,7 @@ public class MouseClickedListener implements java.awt.event.MouseListener {
 		System.out.println(arg0.getX() + " , " + arg0.getY());
 		
 	}
-
+ 
 	@Override
 	public void mouseEntered(java.awt.event.MouseEvent arg0) {
 		
