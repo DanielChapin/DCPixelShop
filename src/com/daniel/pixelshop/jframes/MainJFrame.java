@@ -1,7 +1,6 @@
 package com.daniel.pixelshop.jframes;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
@@ -13,7 +12,6 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.awt.GLJPanel;
-import com.sun.javafx.tk.Toolkit;
 
 /*
 	Made By: Daniel Chapin
@@ -31,7 +29,7 @@ public class MainJFrame extends JFrame {
 	
 	int canvasWidth = 100;
 	int canvasHeight = 100;
-	Color[] colors = new Color[canvasWidth * canvasHeight];
+	Color[] blocks = new Color[canvasWidth * canvasHeight];
 	
 	public MainJFrame() {
 		this.panel = new JPanel();
@@ -85,7 +83,10 @@ public class MainJFrame extends JFrame {
 
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				System.out.println(e.getX() + " , " + e.getY());
+				int canvasX = e.getX() / 4;
+				int canvasY = e.getY() / 4;
+				blocks[convertCoordToInt(canvasX, canvasY)] = colorPicker.getColor();
+				artPanel.display();
 				
 			}
 
@@ -121,10 +122,10 @@ public class MainJFrame extends JFrame {
 			public void display(GLAutoDrawable drawable) {
 				final GL2 gl = drawable.getGL().getGL2();
 				float y = 0;
-				for(int i = 0; i < colors.length; i++) {
+				for(int i = 0; i < blocks.length; i++) {
 					float x = i % canvasWidth;
 					if(x == 0f && i > 20) y += 1f;
-					  gl.glColor3f(colors[i].getRed(), colors[i].getGreen(), colors[i].getBlue());
+					  gl.glColor3f(blocks[i].getRed(), blocks[i].getGreen(), blocks[i].getBlue());
 					  gl.glBegin(GL2.GL_QUADS);
 					  gl.glVertex2f(x, y);
 					  gl.glVertex2f(x + 1, y);
@@ -164,7 +165,11 @@ public class MainJFrame extends JFrame {
     }
 	
 	private void setupDefaultTexture() {
-		for(int i = 0; i < colors.length; i++) colors[i] = new Color(0.5f, 0.5f, 0.5f);
+		for(int i = 0; i < blocks.length; i++) blocks[i] = new Color(0.5f, 0.5f, 0.5f);
+	}
+	
+	private int convertCoordToInt(int x, int y) {
+		return x + (y * canvasWidth);
 	}
 
 }
