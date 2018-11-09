@@ -1,17 +1,12 @@
 package com.daniel.pixelshop.jframes;
 
-import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
-import com.jogamp.opengl.awt.GLJPanel;
+import com.daniel.pixelshop.components.ArtPane;
 
 /*
 	Made By: Daniel Chapin
@@ -20,19 +15,16 @@ import com.jogamp.opengl.awt.GLJPanel;
 public class MainJFrame extends JFrame {
 	
 	JPanel panel;
-	GLJPanel artPanel = new GLJPanel();
-	JColorChooser colorPicker = new JColorChooser();
+	ArtPane artPanel;
+	ColorPicker colorPicker = new ColorPicker();
 	
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int width = gd.getDisplayMode().getWidth();
 	int height = gd.getDisplayMode().getHeight();
 	
-	int canvasWidth = 100;
-	int canvasHeight = 100;
-	Color[] blocks = new Color[canvasWidth * canvasHeight];
-	
 	public MainJFrame() {
 		this.panel = new JPanel();
+		this.artPanel = new ArtPane(40, 40, 10, 10);
 		this.setTitle("DC Pixel Shop");
 		
 		this.setSize(640, 480);
@@ -40,10 +32,7 @@ public class MainJFrame extends JFrame {
 		this.setContentPane(this.panel);
 		this.setVisible(true);
 		
-		setupDefaultTexture();
-		
 		initComponents();
-		
 	}
 	
 	private void initComponents() {
@@ -79,97 +68,8 @@ public class MainJFrame extends JFrame {
                     .addComponent(colorPicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         
-        artPanel.addMouseListener(new java.awt.event.MouseListener() {
-
-			@Override
-			public void mouseClicked(java.awt.event.MouseEvent e) {
-				int canvasX = e.getX() / 4;
-				int canvasY = e.getY() / 4;
-				blocks[convertCoordToInt(canvasX, canvasY)] = colorPicker.getColor();
-				artPanel.display();
-				
-			}
-
-			@Override
-			public void mouseEntered(java.awt.event.MouseEvent e) {
-				
-				
-			}
-
-			@Override 
-			public void mouseExited(java.awt.event.MouseEvent e) {
-				
-				
-			}
-
-			@Override
-			public void mousePressed(java.awt.event.MouseEvent e) {
-				
-				
-			}
-
-			@Override
-			public void mouseReleased(java.awt.event.MouseEvent e) {
-				
-				
-			}
-        	
-        });
-        
-        artPanel.addGLEventListener(new GLEventListener() {
-
-			@Override
-			public void display(GLAutoDrawable drawable) {
-				final GL2 gl = drawable.getGL().getGL2();
-				float y = 0;
-				for(int i = 0; i < blocks.length; i++) {
-					float x = i % canvasWidth;
-					if(x == 0f && i > 20) y += 1f;
-					  gl.glColor3f(blocks[i].getRed(), blocks[i].getGreen(), blocks[i].getBlue());
-					  gl.glBegin(GL2.GL_QUADS);
-					  gl.glVertex2f(x, y);
-					  gl.glVertex2f(x + 1, y);
-					  gl.glVertex2f(x + 1, y + 1);
-					  gl.glVertex2f(x, y + 1);
-					  gl.glEnd();
-				}
-				
-			}
-
-			@Override
-			public void dispose(GLAutoDrawable arg0) {
-				
-				
-			}
-
-			@Override
-			public void init(GLAutoDrawable drawable) {
-				final GL2 gl = drawable.getGL().getGL2();
-				gl.glMatrixMode(GL2.GL_PROJECTION);
-				gl.glPushMatrix();
-				gl.glOrtho(0f, 100f, 100f, 0f, 1.0, -1.0);
-				
-			}
-
-			@Override
-			public void reshape(GLAutoDrawable arg0, int arg1, int arg2, int arg3, int arg4) {
-				
-				
-			}
-        
-        });
-        
-        System.out.println(artPanel.getMouseListeners());
 
         pack();
     }
-	
-	private void setupDefaultTexture() {
-		for(int i = 0; i < blocks.length; i++) blocks[i] = new Color(0.5f, 0.5f, 0.5f);
-	}
-	
-	private int convertCoordToInt(int x, int y) {
-		return x + (y * canvasWidth);
-	}
 
 }
