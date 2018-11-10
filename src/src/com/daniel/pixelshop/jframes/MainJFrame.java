@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import src.com.daniel.pixelshop.components.ArtPane;
+import src.com.daniel.pixelshop.components.ColorPicker;
 
 /*
 	Made By: Daniel Chapin
@@ -26,7 +27,7 @@ public class MainJFrame extends JFrame {
 	
 	public MainJFrame() {
 		this.panel = new JPanel();
-		this.artPanel = new ArtPane(40, 40, 10, 10);
+		this.artPanel = new ArtPane(12, 42, 10, 10);
 		this.setTitle("DC Pixel Shop");
 		
 		this.setSize(640, 480);

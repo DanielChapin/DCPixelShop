@@ -123,7 +123,7 @@ public class ArtPane extends JPanel {
 		});
 		
 		this.setFocusable(true);
-		this.requestFocus(false);
+		this.requestFocus();
 		
 		this.addKeyListener(new KeyListener() {
 			@Override
@@ -175,7 +175,7 @@ public class ArtPane extends JPanel {
 	}
 	
 	private int getArrayIndex(int x, int y) {
-		return (x / this.blockWidth) + ((y / this.blockHeight) * this.height);
+		return (x / this.blockWidth) + ((y / this.blockHeight) * this.width);
 	}
 	
 	public void generateDefaultTexture() {
