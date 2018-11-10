@@ -12,12 +12,14 @@ public class ArtPane extends JPanel {
 	
 	public Color[] texture;
 	
+	Dimension size;
+	
 	public ArtPane(int width, int height, int blockWidth, int blockHeight) {
 		this.width = width;
 		this.height = height;
 		this.blockWidth = blockWidth;
 		this.blockHeight = blockHeight;
-		this.setSize(width * blockWidth, height * blockHeight);
+		this.size = new Dimension(width * blockWidth, height * blockHeight);
 		this.setBackground(new Color(0.95f, 0.95f, 0.95f));
 		this.generateDefaultTexture();
 	}
@@ -28,6 +30,8 @@ public class ArtPane extends JPanel {
 		this.blockWidth = blockWidth;
 		this.blockHeight = blockHeight;
 		this.texture = texture;
+		this.size = new Dimension(width * blockWidth, height * blockHeight);
+		this.setBackground(new Color(0.95f, 0.95f, 0.95f));
 		this.repaint();
 	}
 	
@@ -36,6 +40,11 @@ public class ArtPane extends JPanel {
 		super.paintComponent(g);
 		this.render(g);
 	}
+	
+	@Override
+    public Dimension getPreferredSize() {
+        return this.size;
+    }
 	
 	private void render(Graphics g) {
 		int y = -1;
