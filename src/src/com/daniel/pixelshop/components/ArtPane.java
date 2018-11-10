@@ -3,6 +3,8 @@ package src.com.daniel.pixelshop.components;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -61,9 +63,6 @@ public class ArtPane extends JPanel {
     }
 	
 	private void addListeners() {
-		this.setFocusable(true);
-		this.requestFocus();
-		
 		this.addMouseListener(new MouseListener() {
 
 			@Override
@@ -123,6 +122,9 @@ public class ArtPane extends JPanel {
 			
 		});
 		
+		this.setFocusable(true);
+		this.requestFocus(false);
+		
 		this.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent event) {
@@ -142,6 +144,21 @@ public class ArtPane extends JPanel {
 				
 			}
 				
+		});
+		
+		this.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent event) {
+				
+			}
+
+			@Override
+			public void focusLost(FocusEvent event) {
+				grabFocus();
+				
+			}
+			
 		});
 		
 	}

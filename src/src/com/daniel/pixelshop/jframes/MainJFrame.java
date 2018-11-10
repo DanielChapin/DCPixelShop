@@ -17,7 +17,7 @@ import src.com.daniel.pixelshop.components.ArtPane;
 public class MainJFrame extends JFrame {
 	
 	JPanel panel;
-	ArtPane artPanel;
+	public static ArtPane artPanel;
 	public static ColorPicker colorPicker = new ColorPicker();
 	
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
