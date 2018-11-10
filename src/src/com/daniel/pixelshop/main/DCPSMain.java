@@ -1,6 +1,6 @@
-package com.daniel.pixelshop.main;
+package src.com.daniel.pixelshop.main;
 
-import com.daniel.pixelshop.jframes.MainJFrame;
+import src.com.daniel.pixelshop.jframes.MainJFrame;
 
 /*
 	Made By: Daniel Chapin 

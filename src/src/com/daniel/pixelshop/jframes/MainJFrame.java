@@ -1,4 +1,4 @@
-package com.daniel.pixelshop.jframes;
+package src.com.daniel.pixelshop.jframes;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -6,7 +6,9 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.daniel.pixelshop.components.ArtPane;
+import src.com.daniel.pixelshop.components.ArtPane;
+
+import src.com.daniel.pixelshop.jframes.ColorPicker;
 
 /*
 	Made By: Daniel Chapin

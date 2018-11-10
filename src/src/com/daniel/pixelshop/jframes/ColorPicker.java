@@ -1,4 +1,4 @@
-package com.daniel.pixelshop.jframes;
+package src.com.daniel.pixelshop.jframes;
 
 import javax.swing.JColorChooser;
 

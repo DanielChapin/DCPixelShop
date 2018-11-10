@@ -1,6 +1,7 @@
-package com.daniel.pixelshop.components;
+package src.com.daniel.pixelshop.components;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -20,6 +21,8 @@ public class ArtPane extends JPanel {
 		this.blockWidth = blockWidth;
 		this.blockHeight = blockHeight;
 		this.size = new Dimension(width * blockWidth, height * blockHeight);
+		invalidate();
+        revalidate();
 		this.setBackground(new Color(0.95f, 0.95f, 0.95f));
 		this.generateDefaultTexture();
 	}
