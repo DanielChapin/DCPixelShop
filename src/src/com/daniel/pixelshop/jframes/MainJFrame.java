@@ -8,8 +8,6 @@ import javax.swing.JPanel;
 
 import src.com.daniel.pixelshop.components.ArtPane;
 
-import src.com.daniel.pixelshop.jframes.ColorPicker;
-
 /*
 	Made By: Daniel Chapin
 */
@@ -18,7 +16,7 @@ public class MainJFrame extends JFrame {
 	
 	JPanel panel;
 	ArtPane artPanel;
-	ColorPicker colorPicker = new ColorPicker();
+	public static ColorPicker colorPicker = new ColorPicker();
 	
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int width = gd.getDisplayMode().getWidth();
@@ -34,7 +32,7 @@ public class MainJFrame extends JFrame {
 		this.setContentPane(this.panel);
 		this.setVisible(true);
 		
-		initComponents();
+		this.initComponents();
 	}
 	
 	private void initComponents() {
@@ -70,7 +68,6 @@ public class MainJFrame extends JFrame {
                     .addComponent(colorPicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         
-
         pack();
     }
 
