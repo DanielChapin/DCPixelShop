@@ -2,6 +2,8 @@ package src.com.daniel.pixelshop.jframes;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,6 +71,9 @@ public class MainJFrame extends JFrame {
         );
         
         pack();
+        
     }
+	
+	
 
 }

@@ -3,6 +3,8 @@ package src.com.daniel.pixelshop.components;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -59,6 +61,9 @@ public class ArtPane extends JPanel {
     }
 	
 	private void addListeners() {
+		this.setFocusable(true);
+		this.requestFocus();
+		
 		this.addMouseListener(new MouseListener() {
 
 			@Override
@@ -99,9 +104,11 @@ public class ArtPane extends JPanel {
 
 			@Override
 			public void mouseDragged(MouseEvent event) {
-				final int i = getArrayIndex(event.getX(), event.getY());
+				final int x = event.getX(), y = event.getY();
+				System.out.println(x + ", " + y);
+				final int i = getArrayIndex(x, y);
 				int lasti = -1;
-				if(i != lasti) {
+				if(i != lasti && x < blockWidth * width && x >= 0 && y < blockHeight * height && y >= 0) {
 					texture[i] = MainJFrame.colorPicker.getColor();
 					lasti = i;
 					repaint();
@@ -114,6 +121,27 @@ public class ArtPane extends JPanel {
 				
 			}
 			
+		});
+		
+		this.addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent event) {
+				int code = event.getKeyCode();
+				if(code == event.VK_G) showGrid = !showGrid;
+				
+				repaint();
+			}
+
+			@Override
+			public void keyReleased(KeyEvent event) {
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent event) {
+				
+			}
+				
 		});
 		
 	}
