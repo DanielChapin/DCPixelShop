@@ -2,11 +2,14 @@ package src.com.daniel.pixelshop.jframes;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 import src.com.daniel.pixelshop.components.ArtPane;
 import src.com.daniel.pixelshop.components.ColorPicker;
@@ -20,6 +23,7 @@ public class MainJFrame extends JFrame {
 	JPanel panel;
 	public static ArtPane artPanel;
 	public static ColorPicker colorPicker = new ColorPicker();
+	JMenuBar menuBar = new JMenuBar();
 	
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int width = gd.getDisplayMode().getWidth();
@@ -27,7 +31,7 @@ public class MainJFrame extends JFrame {
 	
 	public MainJFrame() {
 		this.panel = new JPanel();
-		this.artPanel = new ArtPane(12, 42, 10, 10);
+		this.artPanel = new ArtPane(40, 40, 10, 10);
 		this.setTitle("DC Pixel Shop");
 		
 		this.setSize(640, 480);
@@ -41,6 +45,17 @@ public class MainJFrame extends JFrame {
 	private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
+        JMenu file = new JMenu("File");
+        
+        JMenu edit = new JMenu("Edit");
+        JPopupMenu editPopup = new JPopupMenu();
+        editPopup.add("Canvas");
+        edit.add(editPopup);
+        
+        this.menuBar.add(file);
+        this.menuBar.add(edit);
+        this.setJMenuBar(this.menuBar);
 
         javax.swing.GroupLayout artPanelLayout = new javax.swing.GroupLayout(artPanel);
         artPanel.setLayout(artPanelLayout);
@@ -73,6 +88,21 @@ public class MainJFrame extends JFrame {
         
         pack();
         
+        this.addWindowFocusListener(new WindowFocusListener() {
+
+			@Override
+			public void windowGainedFocus(WindowEvent event) {
+				artPanel.grabFocus();
+				
+			}
+
+			@Override
+			public void windowLostFocus(WindowEvent event) {
+				
+				
+			}
+        	
+        });
     }
 	
 	

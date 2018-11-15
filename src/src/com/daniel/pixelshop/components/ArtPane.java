@@ -14,13 +14,14 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 
 import src.com.daniel.pixelshop.jframes.MainJFrame;
+import src.com.daniel.pixelshop.objects.Block;
 
 public class ArtPane extends JPanel {
 	
 	int width, height;
 	int blockWidth, blockHeight;
 	
-	public Color[] texture;
+	public Block[] texture;
 	
 	Dimension size;
 	
@@ -39,7 +40,7 @@ public class ArtPane extends JPanel {
 		this.addListeners();
 	}
 	
-	public ArtPane(int width, int height, int blockWidth, int blockHeight, Color[] texture) {
+	public ArtPane(int width, int height, int blockWidth, int blockHeight, Block[] texture) {
 		this.width = width;
 		this.height = height;
 		this.blockWidth = blockWidth;
@@ -86,7 +87,7 @@ public class ArtPane extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent event) {
 				final int x = event.getX(), y = event.getY();
-				texture[getArrayIndex(x, y)] = MainJFrame.colorPicker.getColor();
+				texture[getArrayIndex(x, y)] = new Block(MainJFrame.colorPicker.getColor());
 				repaint();
 				
 			}
@@ -108,7 +109,7 @@ public class ArtPane extends JPanel {
 				final int i = getArrayIndex(x, y);
 				int lasti = -1;
 				if(i != lasti && x < blockWidth * width && x >= 0 && y < blockHeight * height && y >= 0) {
-					texture[i] = MainJFrame.colorPicker.getColor();
+					texture[i] = new Block(MainJFrame.colorPicker.getColor());
 					lasti = i;
 					repaint();
 				}
@@ -179,8 +180,8 @@ public class ArtPane extends JPanel {
 	}
 	
 	public void generateDefaultTexture() {
-		this.texture = new Color[this.width * this.height];
-		for(int i = 0; i < this.width * this.height; i++) texture[i] = new Color((float) i / (this.width * this.height), (float) i / (this.width * this.height), (float) i / (this.width * this.height));
+		this.texture = new Block[this.width * this.height];
+		for(int i = 0; i < this.width * this.height; i++) texture[i] = new Block(new Color((float) i / (this.width * this.height), (float) i / (this.width * this.height), (float) i / (this.width * this.height)), true);
 		repaint();
 	}
 
